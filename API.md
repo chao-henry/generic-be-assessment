@@ -87,7 +87,7 @@ Players consist of the following information:
 {
   "first_name": "<string>",
   "last_name": "<string>",
-  "rating": "<number",
+  "rating": "<number>",
   "handedness": "left|right"
 }
 ```
@@ -137,7 +137,7 @@ Create new player in the system. Players must have unique first name / last name
 | ---------- | ------ | --------------------------------- |
 | first_name | string | Player first name                 |
 | last_name  | string | Player last name                  |
-| rating     | string | Player rating                     |
+| rating     | number | Player rating                     |
 | handedness | enum   | Player handedness (left or right) |
 
 **Response**

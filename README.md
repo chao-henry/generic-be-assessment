@@ -36,6 +36,8 @@ $ npm install -g newman
 
 ## Running tests
 
+> This assumes your API is running on port 3000
+
 ```console
 $ newman run assessment.json
 ```
