@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "cf2a4356-1355-4ffd-860d-aa7aaa73a982",
+		"_postman_id": "b1073620-4994-4997-ba2a-10bc4a0c3353",
 		"name": "Assessment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -23,7 +23,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"first_name\": \"Josh\",\n\t\"last_name\": \"Rose\",\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\",\n\t\"confirm_password\":\"abc123\"\n}"
 				},
-				"url": "localhost:3000/api/user",
+				"url": "localhost:{{port}}/api/user",
 				"description": "Create a new admin user. Each use must have a unique email address."
 			},
 			"response": [
@@ -34,13 +34,11 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -92,7 +90,7 @@
 					],
 					"cookie": [
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+						  "expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
 							"httpOnly": true,
 							"domain": "localhost",
 							"path": "/",
@@ -101,7 +99,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Dec 03 2018 13:31:02 GMT-0500 (EST)",
+							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -150,7 +148,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\"\n}"
 				},
-				"url": "localhost:3000/api/login",
+				"url": "localhost:{{port}}/api/login",
 				"description": "Login an admin user."
 			},
 			"response": [
@@ -161,13 +159,11 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							}
 						],
 						"body": {
@@ -228,7 +224,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Dec 03 2018 13:31:02 GMT-0500 (EST)",
+							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -277,8 +273,11 @@
 						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
 					}
 				],
-				"body": {},
-				"url": "localhost:3000/api/players",
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "localhost:{{port}}/api/players",
 				"description": "List all current players in the system. Players are scoped to the current user."
 			},
 			"response": [
@@ -289,21 +288,21 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U",
-								"disabled": false
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": "localhost:3000/api/players"
 					},
 					"status": "OK",
@@ -358,7 +357,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Dec 03 2018 13:31:02 GMT-0500 (EST)",
+							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -411,7 +410,7 @@
 					"mode": "raw",
 					"raw": "{\n\t\"first_name\": \"Billy\",\n\t\"last_name\":\"Bob\",\n\t\"rating\":\"9000\",\n\t\"handedness\":\"right\"\n}"
 				},
-				"url": "localhost:3000/api/players",
+				"url": "localhost:{{port}}/api/players",
 				"description": "Create new player in the system. Players must have unique first name / last name combinations.\n\n"
 			},
 			"response": [
@@ -422,18 +421,15 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U",
-								"disabled": false
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
 							}
 						],
 						"body": {
@@ -494,7 +490,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Dec 03 2018 13:31:02 GMT-0500 (EST)",
+							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -543,8 +539,11 @@
 						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
 					}
 				],
-				"body": {},
-				"url": "localhost:3000/api/players/5b856477873eb7911b2c350e"
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "localhost:{{port}}/api/players/5b856477873eb7911b2c350e"
 			},
 			"response": [
 				{
@@ -554,21 +553,21 @@
 						"header": [
 							{
 								"key": "Accept",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": false
+								"value": "application/json"
 							},
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U",
-								"disabled": false
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": "localhost:3000/api/players/5b856477873eb7911b2c350e"
 					},
 					"status": "OK",
@@ -623,7 +622,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Dec 03 2018 13:31:02 GMT-0500 (EST)",
+							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
