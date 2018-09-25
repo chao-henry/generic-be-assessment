@@ -25,7 +25,7 @@ $ newman run assessment.json -g environment.json
 ### For running against a different port
 
 ```console
-newman run assessment.json -g environment.json --global-var "port=8080"
+$ newman run assessment.json -g environment.json --global-var "port=8080"
 ```
 
 Note: You can also import assessment.json into a Postman collection
