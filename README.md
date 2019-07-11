@@ -4,6 +4,11 @@ Henry Chao - Submission
 
 ## Getting Started
 
+The server requires the following programs:
+
+- [yarn](https://yarnpkg.com/en/)
+- [nodejs v10.16.0LTS](https://nodejs.org/en/)
+
 To get started locally, run the following commands on the project root directory:
 
 ```bash
