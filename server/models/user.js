@@ -58,11 +58,12 @@ module.exports = (sequelize, DataTypes) => {
     const user = this;
     const token = jwt.sign({ id: user.id }, jwtOptions.secretOrKey);
     return {
+      success: true,
       user: {
         id: user.id,
-        email: user.email,
         first_name: user.first_name,
-        last_name: user.last_name
+        last_name: user.last_name,
+        email: user.email
       },
       token
     };
