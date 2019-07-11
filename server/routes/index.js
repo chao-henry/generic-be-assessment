@@ -1,5 +1,6 @@
 import express from "express";
 import users from "./users";
+import login from "./login";
 
 const router = express.Router();
 
@@ -7,9 +8,9 @@ const router = express.Router();
 router.get("/ping", (req, res) => res.send("pong"));
 
 router.use("/user", users);
+router.use("/login", login);
 
 /*
-router.use("/login", loginController);
 router.use("/players", playersController);
 */
 
