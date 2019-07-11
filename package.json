@@ -7,6 +7,7 @@
     "db-build": "sequelize db:create --config=server/config/config.js",
     "db-migrate": "sequelize db:migrate --config=server/config/config.js --migrations-path=server/migrations --models-path=server/models",
     "db-drop": "sequelize db:drop --config=server/config/config.js",
+    "db-refresh": "yarn db-drop && yarn db-build && yarn db-migrate",
     "assess": "newman run assessment.json -g environment.json"
   },
   "dependencies": {
