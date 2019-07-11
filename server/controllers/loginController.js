@@ -1,8 +1,11 @@
+import { User } from "../models/index";
+
 const index = async (req, res) => {
   try {
-    // Connect to the DB
+    const response = await User.authenticate(req.body.email, req.body.password);
+    return res.json(response);
   } catch (err) {
-    return res.status(400);
+    return res.status(400).json({ success: false });
   }
 };
 
