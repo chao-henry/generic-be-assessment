@@ -3,10 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "echo 'Run tests'"
+    "start": "nodemon --exec babel-node app.js",
+    "assess": "newman run assessment.json -g environment.json"
   },
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.17.1"
+  },
   "devDependencies": {
-    "newman": "^4.5.1"
+    "newman": "^4.5.1",
+    "nodemon": "^1.19.1",
+    "@babel/node": "^7.5.0",
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "babel-plugin-root-import": "^6.2.0"
   }
 }
