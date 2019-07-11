@@ -13,8 +13,9 @@ const sequelize = new Sequelize(
 );
 
 // Model imports
-db["User"] = sequelize.import(__dirname + "/user");
+const User = sequelize.import(__dirname + "/user");
 
+db.User = User;
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 

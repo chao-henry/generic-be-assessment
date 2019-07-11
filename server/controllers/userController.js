@@ -1,4 +1,4 @@
-import User from "../models/user";
+import { User } from "../models/index";
 
 const index = async (req, res) => {
   try {
@@ -16,7 +16,7 @@ const index = async (req, res) => {
     const response = await user.authorize();
     return res.json(response);
   } catch (err) {
-    return res.status(400).send("Bad request");
+    return res.status(400).send(err);
   }
 };
 
