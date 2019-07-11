@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import { User } from "../models/index";
 
 const index = async (req, res) => {
@@ -10,7 +11,7 @@ const index = async (req, res) => {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
-      password: req.body.password
+      password: bcrypt.hashSync(req.body.password, 10)
     };
     const user = await User.create(userData);
     const response = await user.authorize();
