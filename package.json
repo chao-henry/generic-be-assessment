@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "start": "nodemon --exec babel-node server/app.js",
-    "db-build": "cd server && sequelize db:create",
-    "db-migrate": "cd server && sequelize db:migrate",
-    "db-drop": "cd server && sequelize db:drop",
+    "db-build": "sequelize db:create --config=server/config/config.js",
+    "db-migrate": "sequelize db:migrate --config=server/config/config.js --migrations-path=server/migrations --models-path=server/models",
+    "db-drop": "sequelize db:drop --config=server/config/config.js",
     "assess": "newman run assessment.json -g environment.json"
   },
   "dependencies": {
