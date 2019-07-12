@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import { User } from "../models/index";
+import { logger } from "../config/loggerConfig";
 
 const index = async (req, res) => {
   try {
@@ -17,6 +18,7 @@ const index = async (req, res) => {
     const response = await user.authorize();
     return res.json(response);
   } catch (err) {
+    logger.error(err);
     return res.status(400).send({ success: false });
   }
 };

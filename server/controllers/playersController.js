@@ -2,6 +2,7 @@ import Sequelize from "sequelize";
 
 import { Player, ManagementRelationship } from "../models/index";
 import playerSerializer from "../serializers/playerSerializer";
+import { logger } from "../config/loggerConfig";
 
 const index = async (req, res) => {
   try {
@@ -25,6 +26,7 @@ const index = async (req, res) => {
       players: playersArray
     });
   } catch (err) {
+    logger.error(err);
     return res.status(400).json({ success: false });
   }
 };
@@ -50,6 +52,7 @@ const create_player = async (req, res) => {
       player: playerCreated
     });
   } catch (err) {
+    logger.error(err);
     return res.status(400).json({ success: false });
   }
 };
@@ -86,10 +89,11 @@ const delete_player = async (req, res) => {
         );
       }
     } else {
-      throw "Error in record destruction";
+      throw new Error("Error in record destruction");
     }
     return res.json({ success: true });
   } catch (err) {
+    logger.error(err);
     return res.status(400).json({ success: false });
   }
 };
