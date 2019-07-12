@@ -36,6 +36,7 @@ Then run the following commands on the project root directory:
 ```bash
 yarn
 yarn db-build
+yarn db-migrate
 yarn start
 ```
 
