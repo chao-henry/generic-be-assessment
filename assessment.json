@@ -337,6 +337,24 @@
 		},
 		{
 			"name": "List Players",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed8f2262-81dc-46f6-b621-4ccea568d38f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"No players exist yet\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.players.length).to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "GET",
 				"header": [
@@ -653,6 +671,24 @@
 		},
 		{
 			"name": "Delete Player",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "14ca6c58-4a3f-4d5e-95b5-6d402347713f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Successfully deleted player\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "DELETE",
 				"header": [
