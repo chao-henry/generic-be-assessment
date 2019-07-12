@@ -1,28 +1,38 @@
 "use strict";
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable("ManagementRelationships", {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
+    return queryInterface.createTable(
+      "ManagementRelationships",
+      {
+        id: {
+          allowNull: false,
+          autoIncrement: true,
+          primaryKey: true,
+          type: Sequelize.INTEGER
+        },
+        adminUUID: {
+          type: Sequelize.UUID
+        },
+        playerUUID: {
+          type: Sequelize.UUID
+        },
+        createdAt: {
+          allowNull: false,
+          type: Sequelize.DATE
+        },
+        updatedAt: {
+          allowNull: false,
+          type: Sequelize.DATE
+        }
       },
-      adminUUID: {
-        type: Sequelize.UUID
-      },
-      playerUUID: {
-        type: Sequelize.UUID
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
+      {
+        uniqueKeys: {
+          compositeRelationshipRequirement: {
+            fields: ["adminUUID", "playerUUID"]
+          }
+        }
       }
-    });
+    );
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable("ManagementRelationships");
