@@ -7,6 +7,9 @@ Henry Chao - Submission
   - [Assessment](#Assessment)
   - [Framework and Dependencies](#Framework-and-Dependencies)
   - [Security and Performance Considerations](#Security-and-Performance-Considerations)
+  - [Deployments and Testing](#Deployments-and-Testing)
+    - [Docker](#Docker)
+    - [Docker Compose and Testing](#Docker-Compose-and-Testing)
 
 ## Getting Started
 
@@ -68,3 +71,45 @@ Newman is used for the assessment testing, but it has also been extended to perf
 - Input validation is currently not performed, but should be integrated for a production system. Since the API would be exposed to the public, we would not trust any input received, and should perform validation/linting to safely receive input values.
 - Since we are not using sessions to manage connections between the client and server, the JWT should be set to expire after some time (in order to limit the attack surface of having long-living JWTs). However, this also introduces the need to integrate refresh tokens to allow clients to properly extend the terms of their authorization as well.
 - The NodeJS server here is designed to run and serve the API gateway for requests. However, it is poorly secured and not optimized to handle client connections. The server should be ran behind a reverse proxy server, which would focus on establishing the correct HTTP header values for security, as well as handle connection pooling and session management with clients.
+
+## Deployments and Testing
+
+### Docker
+
+If you want to test this application using Docker, ensure that you have the [latest version downloaded](https://www.docker.com/products/docker-desktop) and running locally. Then run the following commands from the project root directory:
+
+```bash
+yarn build
+docker build -t be_exercise .
+```
+
+Once the image is build, you can run it locally and have it listen on port 3000 with the following command:
+
+```bash
+docker run -d --name be_exercise -p 3000:3000 -e JWT_SECRET_KEY=asdf1234 be_exercise
+```
+
+You should then be able to send a GET request to the `/api/ping` route to check that the server is running:
+
+```bash
+>> curl http://localhost:3000/api/ping
+pong%
+```
+
+This docker image would behave as if it was to be deployed into a production environment, such as in [AWS ECS](https://aws.amazon.com/ecs/). For security and portability, environment variables (such as the database host and name) would be passed into the docker container at run time, as well as secret values (such as the JWT secret and database credentials).
+
+### Docker Compose and Testing
+
+If you want to test the application locally, and you have [docker compose](https://docs.docker.com/compose/) installed, you can execute the following command to start a local testing environment:
+
+```bash
+yarn build
+docker build -t be_exercise .
+docker-compose up -d
+docker exec be_exercise yarn db-build
+docker exec be_exercise yarn db-migrate
+```
+
+You can then run Postman or Newman against your `localhost:3000` for the assessment. Or alternative run the `yarn assess` or `yarn regression-test` command.
+
+Run `docker-compose down` after testing is complete to shut down the containers.

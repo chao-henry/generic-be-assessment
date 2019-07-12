@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "assess": "newman run assessment.json -g environment.json",
+    "build": "rm -rf build && babel . -d build --ignore node_modules",
     "db-build": "sequelize db:create --config=server/config/config.js",
     "db-drop": "sequelize db:drop --config=server/config/config.js",
     "db-migrate": "sequelize db:migrate --config=server/config/config.js --migrations-path=server/migrations --models-path=server/models",

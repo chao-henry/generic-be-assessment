@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  backend:
+    container_name: "be_exercise"
+    image: "be_exercise:latest"
+    depends_on:
+      - "db"
+    networks:
+      - "default"
+    ports:
+      - "3000:3000"
+    environment: 
+      - JWT_SECRET_KEY=secret
+      - DATABASE_NAME=alchemy_dev
+      - DATABASE_HOST=db
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=postgres
+  db:
+    container_name: "db"
+    image: "postgres:11.3-alpine"
+    environment:
+      - POSTGRES_PASSWORD=postgres
