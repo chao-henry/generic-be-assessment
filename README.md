@@ -8,11 +8,24 @@ The server requires the following programs:
 
 - [yarn](https://yarnpkg.com/en/)
 - [nodejs v10.16.0LTS](https://nodejs.org/en/)
+- [postgresql](https://www.postgresql.org/)
 
-To get started locally, run the following commands on the project root directory:
+To get started locally, set up the necessary environment variables by copying the `.env.sample` file to `.env` in the project root. Modify the values for your local environment, for example:
+
+```bash
+JWT_SECRET_KEY="abcdefg123456"
+DATABASE_NAME="alchemy_dev"
+DATBASE_HOST="localhost"
+DATABASE_USERNAME="postgres"
+DATABASE_PASSWORD="postgres"
+
+```
+
+Then run the following commands on the project root directory:
 
 ```bash
 yarn
+yarn db-build
 yarn start
 ```
 

@@ -4,10 +4,23 @@
   "private": true,
   "scripts": {
     "start": "nodemon --exec babel-node server/app.js",
+    "db-build": "sequelize db:create --config=server/config/config.js",
+    "db-migrate": "sequelize db:migrate --config=server/config/config.js --migrations-path=server/migrations --models-path=server/models",
+    "db-drop": "sequelize db:drop --config=server/config/config.js",
+    "db-refresh": "yarn db-drop && yarn db-build && yarn db-migrate",
     "assess": "newman run assessment.json -g environment.json"
   },
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "sequelize": "^5.9.0",
+    "sequelize-cli": "^5.5.0",
+    "dotenv": "^8.0.0",
+    "bcrypt": "^3.0.6",
+    "uuid": "^3.3.2",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "^7.11.0"
   },
   "devDependencies": {
     "newman": "^4.5.1",
