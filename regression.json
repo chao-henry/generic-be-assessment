@@ -1,0 +1,2671 @@
+{
+	"info": {
+		"_postman_id": "a12298eb-6ae3-4721-ad2a-00e730a26b93",
+		"name": "Regression",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fea189e-c9bd-4878-9bed-222cca86fe30",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Json Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"    pm.expect(jsonData.user).to.exist;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\": \"Josh\",\n\t\"last_name\": \"Rose\",\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\",\n\t\"confirm_password\":\"abc123\"\n}"
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"user"
+					]
+				},
+				"description": "Create a new admin user. Each use must have a unique email address."
+			},
+			"response": [
+				{
+					"name": "Create User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Josh\",\n\t\"last_name\": \"Rose\",\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\",\n\t\"confirm_password\":\"abc123\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "289",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 14:55:56 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"121-cgtYoXmrV3/k+ba2oRX/cWbsJ9o\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgxNTZ9.t9xqGSsEPvjJPDscZHqhTKDdsgSAfFZZoAllXF9AjmY\",\"user\":{\"id\":\"5b85627c873eb7911b2c350d\",\"first_name\":\"Josh\",\"last_name\":\"Rose\",\"email\":\"josh@alchemy.codes\"}}"
+				}
+			]
+		},
+		{
+			"name": "Create User Again",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fea189e-c9bd-4878-9bed-222cca86fe30",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Json Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(false);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\": \"Josh\",\n\t\"last_name\": \"Rose\",\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\",\n\t\"confirm_password\":\"abc123\"\n}"
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"user"
+					]
+				},
+				"description": "Create a new admin user. Each use must have a unique email address."
+			},
+			"response": [
+				{
+					"name": "Create User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Josh\",\n\t\"last_name\": \"Rose\",\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\",\n\t\"confirm_password\":\"abc123\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "289",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 14:55:56 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"121-cgtYoXmrV3/k+ba2oRX/cWbsJ9o\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgxNTZ9.t9xqGSsEPvjJPDscZHqhTKDdsgSAfFZZoAllXF9AjmY\",\"user\":{\"id\":\"5b85627c873eb7911b2c350d\",\"first_name\":\"Josh\",\"last_name\":\"Rose\",\"email\":\"josh@alchemy.codes\"}}"
+				}
+			]
+		},
+		{
+			"name": "Create Another User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fea189e-c9bd-4878-9bed-222cca86fe30",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Json Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"    pm.expect(jsonData.user).to.exist;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\": \"Josh\",\n\t\"last_name\": \"Rose2\",\n\t\"email\":\"josh2@alchemy.codes\",\n\t\"password\":\"abc123\",\n\t\"confirm_password\":\"abc123\"\n}"
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"user"
+					]
+				},
+				"description": "Create a new admin user. Each use must have a unique email address."
+			},
+			"response": [
+				{
+					"name": "Create User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Josh\",\n\t\"last_name\": \"Rose\",\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\",\n\t\"confirm_password\":\"abc123\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "289",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 14:55:56 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"121-cgtYoXmrV3/k+ba2oRX/cWbsJ9o\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgxNTZ9.t9xqGSsEPvjJPDscZHqhTKDdsgSAfFZZoAllXF9AjmY\",\"user\":{\"id\":\"5b85627c873eb7911b2c350d\",\"first_name\":\"Josh\",\"last_name\":\"Rose\",\"email\":\"josh@alchemy.codes\"}}"
+				}
+			]
+		},
+		{
+			"name": "Bad User Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe5d4b2b-24d1-4888-9d1b-f1b256ee732f",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Success is false\", function () {",
+							"    pm.expect(jsonData.success).to.eql(false);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123456\"\n}"
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Attempt to login with bad credentials."
+			},
+			"response": [
+				{
+					"name": "User Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "289",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 14:58:36 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"121-B6rca0r4OK9MgzQNEkEBuAimKZU\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"user\":{\"id\":\"5b85627c873eb7911b2c350d\",\"first_name\":\"Josh\",\"last_name\":\"Rose\",\"email\":\"josh@alchemy.codes\"},\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U\"}"
+				}
+			]
+		},
+		{
+			"name": "User Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe5d4b2b-24d1-4888-9d1b-f1b256ee732f",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Success is true\", function () {",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});",
+							"pm.environment.set(\"bearer_token\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\"\n}"
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Login an admin user."
+			},
+			"response": [
+				{
+					"name": "User Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "289",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 14:58:36 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"121-B6rca0r4OK9MgzQNEkEBuAimKZU\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"user\":{\"id\":\"5b85627c873eb7911b2c350d\",\"first_name\":\"Josh\",\"last_name\":\"Rose\",\"email\":\"josh@alchemy.codes\"},\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U\"}"
+				}
+			]
+		},
+		{
+			"name": "List Players",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed8f2262-81dc-46f6-b621-4ccea568d38f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"No players exist yet\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.players.length).to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
+				},
+				"description": "List all current players in the system. Players are scoped to the current user."
+			},
+			"response": [
+				{
+					"name": "List Players",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "960",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:04:39 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3c0-9aAfOkeEA79LDpjmGkXllwecTr8\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"players\":[{\"$__\":{\"strictMode\":true,\"selected\":{},\"getters\":{},\"_id\":\"5b856477873eb7911b2c350e\",\"wasPopulated\":false,\"activePaths\":{\"paths\":{\"created_by\":\"init\",\"handedness\":\"init\",\"rating\":\"init\",\"last_name\":\"init\",\"first_name\":\"init\",\"_id\":\"init\"},\"states\":{\"ignore\":{},\"default\":{},\"init\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true},\"modify\":{},\"require\":{}},\"stateNames\":[\"require\",\"modify\",\"init\",\"default\",\"ignore\"]},\"pathsToScopes\":{},\"session\":null,\"emitter\":{\"_events\":{},\"_eventsCount\":0,\"_maxListeners\":0},\"$options\":{\"skipId\":true,\"isNew\":false,\"skipDefaults\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true}}},\"isNew\":false,\"_doc\":{\"_id\":\"5b856477873eb7911b2c350e\",\"first_name\":\"Billy\",\"last_name\":\"Bob\",\"rating\":9000,\"handedness\":\"right\",\"created_by\":\"5b85627c873eb7911b2c350d\"},\"$init\":true,\"id\":\"5b856477873eb7911b2c350e\"}]}"
+				}
+			]
+		},
+		{
+			"name": "Create Player",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e78a4600-b4cc-429a-82cb-f5d732ac7883",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.environment.set(\"player_id\", jsonData.player.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\": \"Billy\",\n\t\"last_name\":\"Bob\",\n\t\"rating\":\"9000\",\n\t\"handedness\":\"right\"\n}"
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
+				},
+				"description": "Create new player in the system. Players must have unique first name / last name combinations.\n\n"
+			},
+			"response": [
+				{
+					"name": "Create Player",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Billy\",\n\t\"last_name\":\"Bob\",\n\t\"rating\":\"9000\",\n\t\"handedness\":\"right\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "173",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:04:23 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ad-fUshU5YtPEB4k9k1Uv6omnUGHxo\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"player\":{\"first_name\":\"Billy\",\"last_name\":\"Bob\",\"rating\":9000,\"handedness\":\"right\",\"created_by\":\"5b85627c873eb7911b2c350d\",\"id\":\"5b856477873eb7911b2c350e\"}}"
+				}
+			]
+		},
+		{
+			"name": "Create Same Player",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e78a4600-b4cc-429a-82cb-f5d732ac7883",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(false);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\": \"Billy\",\n\t\"last_name\":\"Bob\",\n\t\"rating\":\"9000\",\n\t\"handedness\":\"right\"\n}"
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
+				},
+				"description": "Attempt to create the same player. This is expected to fail."
+			},
+			"response": [
+				{
+					"name": "Create Player",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Billy\",\n\t\"last_name\":\"Bob\",\n\t\"rating\":\"9000\",\n\t\"handedness\":\"right\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "173",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:04:23 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ad-fUshU5YtPEB4k9k1Uv6omnUGHxo\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"player\":{\"first_name\":\"Billy\",\"last_name\":\"Bob\",\"rating\":9000,\"handedness\":\"right\",\"created_by\":\"5b85627c873eb7911b2c350d\",\"id\":\"5b856477873eb7911b2c350e\"}}"
+				}
+			]
+		},
+		{
+			"name": "List Players Again",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed8f2262-81dc-46f6-b621-4ccea568d38f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"One player found\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.players.length).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
+				},
+				"description": "List all current players in the system. One player should be returned."
+			},
+			"response": [
+				{
+					"name": "List Players",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "960",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:04:39 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3c0-9aAfOkeEA79LDpjmGkXllwecTr8\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"players\":[{\"$__\":{\"strictMode\":true,\"selected\":{},\"getters\":{},\"_id\":\"5b856477873eb7911b2c350e\",\"wasPopulated\":false,\"activePaths\":{\"paths\":{\"created_by\":\"init\",\"handedness\":\"init\",\"rating\":\"init\",\"last_name\":\"init\",\"first_name\":\"init\",\"_id\":\"init\"},\"states\":{\"ignore\":{},\"default\":{},\"init\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true},\"modify\":{},\"require\":{}},\"stateNames\":[\"require\",\"modify\",\"init\",\"default\",\"ignore\"]},\"pathsToScopes\":{},\"session\":null,\"emitter\":{\"_events\":{},\"_eventsCount\":0,\"_maxListeners\":0},\"$options\":{\"skipId\":true,\"isNew\":false,\"skipDefaults\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true}}},\"isNew\":false,\"_doc\":{\"_id\":\"5b856477873eb7911b2c350e\",\"first_name\":\"Billy\",\"last_name\":\"Bob\",\"rating\":9000,\"handedness\":\"right\",\"created_by\":\"5b85627c873eb7911b2c350d\"},\"$init\":true,\"id\":\"5b856477873eb7911b2c350e\"}]}"
+				}
+			]
+		},
+		{
+			"name": "Create Another Player",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e78a4600-b4cc-429a-82cb-f5d732ac7883",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"first_name\": \"Billy\",\n\t\"last_name\":\"Bob2\",\n\t\"rating\":\"3000\",\n\t\"handedness\":\"right\"\n}"
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
+				},
+				"description": "Create new player in the system. Players must have unique first name / last name combinations.\n\n"
+			},
+			"response": [
+				{
+					"name": "Create Player",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"first_name\": \"Billy\",\n\t\"last_name\":\"Bob\",\n\t\"rating\":\"9000\",\n\t\"handedness\":\"right\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "173",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:04:23 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"ad-fUshU5YtPEB4k9k1Uv6omnUGHxo\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"player\":{\"first_name\":\"Billy\",\"last_name\":\"Bob\",\"rating\":9000,\"handedness\":\"right\",\"created_by\":\"5b85627c873eb7911b2c350d\",\"id\":\"5b856477873eb7911b2c350e\"}}"
+				}
+			]
+		},
+		{
+			"name": "List More Players",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed8f2262-81dc-46f6-b621-4ccea568d38f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Two player found\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.players.length).to.eql(2);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
+				},
+				"description": "List all current players in the system. Two players should be returned."
+			},
+			"response": [
+				{
+					"name": "List Players",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "960",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:04:39 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3c0-9aAfOkeEA79LDpjmGkXllwecTr8\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"players\":[{\"$__\":{\"strictMode\":true,\"selected\":{},\"getters\":{},\"_id\":\"5b856477873eb7911b2c350e\",\"wasPopulated\":false,\"activePaths\":{\"paths\":{\"created_by\":\"init\",\"handedness\":\"init\",\"rating\":\"init\",\"last_name\":\"init\",\"first_name\":\"init\",\"_id\":\"init\"},\"states\":{\"ignore\":{},\"default\":{},\"init\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true},\"modify\":{},\"require\":{}},\"stateNames\":[\"require\",\"modify\",\"init\",\"default\",\"ignore\"]},\"pathsToScopes\":{},\"session\":null,\"emitter\":{\"_events\":{},\"_eventsCount\":0,\"_maxListeners\":0},\"$options\":{\"skipId\":true,\"isNew\":false,\"skipDefaults\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true}}},\"isNew\":false,\"_doc\":{\"_id\":\"5b856477873eb7911b2c350e\",\"first_name\":\"Billy\",\"last_name\":\"Bob\",\"rating\":9000,\"handedness\":\"right\",\"created_by\":\"5b85627c873eb7911b2c350d\"},\"$init\":true,\"id\":\"5b856477873eb7911b2c350e\"}]}"
+				}
+			]
+		},
+		{
+			"name": "Second User Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe5d4b2b-24d1-4888-9d1b-f1b256ee732f",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Success is true\", function () {",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});",
+							"",
+							"pm.globals.set(\"second_bearer_token\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"josh2@alchemy.codes\",\n\t\"password\":\"abc123\"\n}"
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"login"
+					]
+				},
+				"description": "Login an the second admin user."
+			},
+			"response": [
+				{
+					"name": "User Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\"\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "289",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 14:58:36 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"121-B6rca0r4OK9MgzQNEkEBuAimKZU\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"user\":{\"id\":\"5b85627c873eb7911b2c350d\",\"first_name\":\"Josh\",\"last_name\":\"Rose\",\"email\":\"josh@alchemy.codes\"},\"token\":\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U\"}"
+				}
+			]
+		},
+		{
+			"name": "List Players As the Second Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed8f2262-81dc-46f6-b621-4ccea568d38f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Two player found\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.players.length).to.eql(0);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{second_bearer_token}}"
+					}
+				],
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
+				},
+				"description": "Attempt to list all current players in the system as the second admin user. No players should be returned."
+			},
+			"response": [
+				{
+					"name": "List Players",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "960",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:04:39 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3c0-9aAfOkeEA79LDpjmGkXllwecTr8\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"players\":[{\"$__\":{\"strictMode\":true,\"selected\":{},\"getters\":{},\"_id\":\"5b856477873eb7911b2c350e\",\"wasPopulated\":false,\"activePaths\":{\"paths\":{\"created_by\":\"init\",\"handedness\":\"init\",\"rating\":\"init\",\"last_name\":\"init\",\"first_name\":\"init\",\"_id\":\"init\"},\"states\":{\"ignore\":{},\"default\":{},\"init\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true},\"modify\":{},\"require\":{}},\"stateNames\":[\"require\",\"modify\",\"init\",\"default\",\"ignore\"]},\"pathsToScopes\":{},\"session\":null,\"emitter\":{\"_events\":{},\"_eventsCount\":0,\"_maxListeners\":0},\"$options\":{\"skipId\":true,\"isNew\":false,\"skipDefaults\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true}}},\"isNew\":false,\"_doc\":{\"_id\":\"5b856477873eb7911b2c350e\",\"first_name\":\"Billy\",\"last_name\":\"Bob\",\"rating\":9000,\"handedness\":\"right\",\"created_by\":\"5b85627c873eb7911b2c350d\"},\"$init\":true,\"id\":\"5b856477873eb7911b2c350e\"}]}"
+				}
+			]
+		},
+		{
+			"name": "Delete Player As Second Admin",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "14ca6c58-4a3f-4d5e-95b5-6d402347713f",
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {",
+							"    pm.response.to.have.status(400);",
+							"});",
+							"pm.test(\"Did not deleted player\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(false);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{second_bearer_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/players/{{player_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players",
+						"{{player_id}}"
+					]
+				},
+				"description": "Attempt to delete a player as the second admin. This should fail."
+			},
+			"response": [
+				{
+					"name": "Delete Player",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/api/players/5b856477873eb7911b2c350e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players",
+								"5b856477873eb7911b2c350e"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "16",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:07:35 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true}"
+				}
+			]
+		},
+		{
+			"name": "Delete Player",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "14ca6c58-4a3f-4d5e-95b5-6d402347713f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Successfully deleted player\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:{{port}}/api/players/{{player_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players",
+						"{{player_id}}"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Player",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:3000/api/players/5b856477873eb7911b2c350e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players",
+								"5b856477873eb7911b2c350e"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "16",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:07:35 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true}"
+				}
+			]
+		},
+		{
+			"name": "List Players After Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ed8f2262-81dc-46f6-b621-4ccea568d38f",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"One player found\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.players.length).to.eql(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{bearer_token}}"
+					}
+				],
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
+				},
+				"description": "List all current players in the system. Only one player should be returned."
+			},
+			"response": [
+				{
+					"name": "List Players",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Connection",
+							"value": "keep-alive",
+							"name": "Connection",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"key": "Content-Length",
+							"value": "960",
+							"name": "Content-Length",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8",
+							"name": "Content-Type",
+							"description": "The mime type of this content"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 28 Aug 2018 15:04:39 GMT",
+							"name": "Date",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"3c0-9aAfOkeEA79LDpjmGkXllwecTr8\"",
+							"name": "ETag",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express",
+							"name": "X-Powered-By",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [
+						{
+							"expires": "Invalid Date",
+							"httpOnly": true,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "wyO3eaQ1AFK8_sKFu6Ciqnv_0jWHQu7UEYN2neHB-KRWwGkaK9WYK8B2vnAbC_mSl33rYwp1KXTNzwvvIOf6Uw==",
+							"key": "dwsid"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "cdff1leVSWXbMwyCusteWYQaB5",
+							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "__cq_dnt"
+						},
+						{
+							"expires": "Invalid Date",
+							"httpOnly": false,
+							"domain": "localhost",
+							"path": "/",
+							"secure": false,
+							"value": "0",
+							"key": "dw_dnt"
+						}
+					],
+					"body": "{\"success\":true,\"players\":[{\"$__\":{\"strictMode\":true,\"selected\":{},\"getters\":{},\"_id\":\"5b856477873eb7911b2c350e\",\"wasPopulated\":false,\"activePaths\":{\"paths\":{\"created_by\":\"init\",\"handedness\":\"init\",\"rating\":\"init\",\"last_name\":\"init\",\"first_name\":\"init\",\"_id\":\"init\"},\"states\":{\"ignore\":{},\"default\":{},\"init\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true},\"modify\":{},\"require\":{}},\"stateNames\":[\"require\",\"modify\",\"init\",\"default\",\"ignore\"]},\"pathsToScopes\":{},\"session\":null,\"emitter\":{\"_events\":{},\"_eventsCount\":0,\"_maxListeners\":0},\"$options\":{\"skipId\":true,\"isNew\":false,\"skipDefaults\":{\"_id\":true,\"first_name\":true,\"last_name\":true,\"rating\":true,\"handedness\":true,\"created_by\":true}}},\"isNew\":false,\"_doc\":{\"_id\":\"5b856477873eb7911b2c350e\",\"first_name\":\"Billy\",\"last_name\":\"Bob\",\"rating\":9000,\"handedness\":\"right\",\"created_by\":\"5b85627c873eb7911b2c350d\"},\"$init\":true,\"id\":\"5b856477873eb7911b2c350e\"}]}"
+				}
+			]
+		}
+	]
+}

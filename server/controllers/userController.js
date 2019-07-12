@@ -17,7 +17,7 @@ const index = async (req, res) => {
     const response = await user.authorize();
     return res.json(response);
   } catch (err) {
-    return res.status(400).send(err);
+    return res.status(400).send({ success: false });
   }
 };
 
