@@ -16,8 +16,5 @@ module.exports = (sequelize, DataTypes) => {
   Player.beforeCreate((player, _) => {
     return (player.id = uuid());
   });
-  Player.associate = function(models) {
-    // associations can be defined here
-  };
   return Player;
 };
