@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 
 const pool_config = {
   min: 0,
@@ -11,26 +11,26 @@ const pool_config = {
 module.exports = {
   test: {
     database: process.env.DATABASE_NAME,
-    host: process.env.DATBASE_HOST,
+    host: process.env.DATABASE_HOST,
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
-    dialect: "postgres",
+    dialect: 'postgres',
     pool: pool_config
   },
   development: {
     database: process.env.DATABASE_NAME,
-    host: process.env.DATBASE_HOST,
+    host: process.env.DATABASE_HOST,
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
-    dialect: "postgres",
+    dialect: 'postgres',
     pool: pool_config
   },
   production: {
     database: process.env.DATABASE_NAME,
-    host: process.env.DATBASE_HOST,
+    host: process.env.DATABASE_HOST,
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
-    dialect: "postgres",
+    dialect: 'postgres',
     pool: pool_config
   }
 };
