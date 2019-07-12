@@ -1,4 +1,11 @@
-const playerSerializer = ({ first_name, last_name, rating, handedness }) => ({
+const playerSerializer = ({
+  id,
+  first_name,
+  last_name,
+  rating,
+  handedness
+}) => ({
+  id,
   first_name,
   last_name,
   rating,
