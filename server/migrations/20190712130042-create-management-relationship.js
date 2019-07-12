@@ -8,11 +8,11 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      admin: {
-        type: Sequelize.STRING
+      adminUUID: {
+        type: Sequelize.UUID
       },
-      player: {
-        type: Sequelize.STRING
+      playerUUID: {
+        type: Sequelize.UUID
       },
       createdAt: {
         allowNull: false,

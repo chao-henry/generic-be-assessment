@@ -1,8 +1,8 @@
 import express from "express";
 import passport from "passport";
 
-import routes from "./routes";
 import { strategy } from "./config/passportConfig";
+import routes from "./routes";
 
 passport.use(strategy);
 

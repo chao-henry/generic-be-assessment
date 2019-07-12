@@ -1,3 +1,5 @@
+"use strict";
+
 import uuid from "uuid/v4";
 
 module.exports = (sequelize, DataTypes) => {

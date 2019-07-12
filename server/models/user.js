@@ -1,7 +1,10 @@
+"use strict";
+
 import bcrypt from "bcrypt";
 import uuid from "uuid/v4";
 import jwt from "jsonwebtoken";
 import jwtOptions from "../config/passportConfig";
+import userSerializer from "../serializers/userSerializer";
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define("User", {
@@ -57,14 +60,10 @@ module.exports = (sequelize, DataTypes) => {
   User.prototype.authorize = async function() {
     const user = this;
     const token = jwt.sign({ id: user.id }, jwtOptions.secretOrKey);
+    const userData = userSerializer(user);
     return {
       success: true,
-      user: {
-        id: user.id,
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email
-      },
+      user: userData,
       token
     };
   };

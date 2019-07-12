@@ -1,8 +1,16 @@
+import { Player, ManagementRelationship } from "../models/index";
+
 const index = async (req, res) => {
   try {
-    // Connect to the DB
+    const adminUUID = req.body.user.id;
+    const adminRelationships = await ManagementRelationship.findAll({
+      where: {
+        adminUUID
+      }
+    });
+    console.log(adminRelationships);
   } catch (err) {
-    return res.status(400);
+    return res.status(400).json({ success: false });
   }
 };
 
