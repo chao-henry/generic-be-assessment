@@ -3,32 +3,51 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon --exec babel-node server/app.js",
+    "assess": "newman run assessment.json -g environment.json",
     "db-build": "sequelize db:create --config=server/config/config.js",
-    "db-migrate": "sequelize db:migrate --config=server/config/config.js --migrations-path=server/migrations --models-path=server/models",
     "db-drop": "sequelize db:drop --config=server/config/config.js",
+    "db-migrate": "sequelize db:migrate --config=server/config/config.js --migrations-path=server/migrations --models-path=server/models",
     "db-refresh": "yarn db-drop && yarn db-build && yarn db-migrate",
-    "assess": "newman run assessment.json -g environment.json"
+    "regression-test": "yarn db-refresh && newman run regression.json -g environment.json",
+    "start": "nodemon --exec babel-node server/app.js",
+    "test": "NODE_ENV=test jest -ci",
+    "static-scan": "docker run -v server:/src jonpwilson/nodejsscan-cli -d /src -o /src/results.json"
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "sequelize": "^5.9.0",
-    "sequelize-cli": "^5.5.0",
-    "dotenv": "^8.0.0",
     "bcrypt": "^3.0.6",
-    "uuid": "^3.3.2",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-winston": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
-    "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "pg": "^7.11.0"
+    "passport": "^0.4.0",
+    "pg": "^7.11.0",
+    "sequelize-cli": "^5.5.0",
+    "sequelize": "^5.9.0",
+    "uuid": "^3.3.2",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
-    "newman": "^4.5.1",
-    "nodemon": "^1.19.1",
-    "@babel/node": "^7.5.0",
     "@babel/cli": "^7.5.0",
     "@babel/core": "^7.5.4",
+    "@babel/node": "^7.5.0",
     "@babel/preset-env": "^7.5.4",
-    "babel-plugin-root-import": "^6.2.0"
+    "babel-plugin-root-import": "^6.2.0",
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.2.0",
+    "newman": "^4.5.1",
+    "nodemon": "^1.19.1",
+    "prettier": "^1.18.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "server/**/*.js": [
+      "prettier --single-quote --write"
+    ]
   }
 }
