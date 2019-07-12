@@ -1,12 +1,31 @@
 {
 	"info": {
-		"_postman_id": "b1073620-4994-4997-ba2a-10bc4a0c3353",
+		"_postman_id": "2a2c8585-9f15-46a6-bfdd-7c867501a346",
 		"name": "Assessment",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fea189e-c9bd-4878-9bed-222cca86fe30",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Json Test\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"    pm.expect(jsonData.user).to.exist;",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -23,7 +42,17 @@
 					"mode": "raw",
 					"raw": "{\n\t\"first_name\": \"Josh\",\n\t\"last_name\": \"Rose\",\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\",\n\t\"confirm_password\":\"abc123\"\n}"
 				},
-				"url": "localhost:{{port}}/api/user",
+				"url": {
+					"raw": "localhost:{{port}}/api/user",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"user"
+					]
+				},
 				"description": "Create a new admin user. Each use must have a unique email address."
 			},
 			"response": [
@@ -45,7 +74,17 @@
 							"mode": "raw",
 							"raw": "{\n\t\"first_name\": \"Josh\",\n\t\"last_name\": \"Rose\",\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\",\n\t\"confirm_password\":\"abc123\"\n}"
 						},
-						"url": "localhost:3000/api/user"
+						"url": {
+							"raw": "localhost:3000/api/user",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"user"
+							]
+						}
 					},
 					"status": "Created",
 					"code": 201,
@@ -90,7 +129,7 @@
 					],
 					"cookie": [
 						{
-						  "expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": true,
 							"domain": "localhost",
 							"path": "/",
@@ -99,7 +138,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -108,7 +147,7 @@
 							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -117,7 +156,7 @@
 							"key": "__cq_dnt"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -132,6 +171,27 @@
 		},
 		{
 			"name": "User Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "fe5d4b2b-24d1-4888-9d1b-f1b256ee732f",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Success is true\", function () {",
+							"    pm.expect(jsonData.success).to.eql(true);",
+							"});",
+							"pm.environment.set(\"bearer_token\", jsonData.token);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -148,7 +208,17 @@
 					"mode": "raw",
 					"raw": "{\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\"\n}"
 				},
-				"url": "localhost:{{port}}/api/login",
+				"url": {
+					"raw": "localhost:{{port}}/api/login",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"login"
+					]
+				},
 				"description": "Login an admin user."
 			},
 			"response": [
@@ -170,7 +240,17 @@
 							"mode": "raw",
 							"raw": "{\n\t\"email\":\"josh@alchemy.codes\",\n\t\"password\":\"abc123\"\n}"
 						},
-						"url": "localhost:3000/api/login"
+						"url": {
+							"raw": "localhost:3000/api/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"login"
+							]
+						}
 					},
 					"status": "OK",
 					"code": 200,
@@ -215,7 +295,7 @@
 					],
 					"cookie": [
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": true,
 							"domain": "localhost",
 							"path": "/",
@@ -224,7 +304,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -233,7 +313,7 @@
 							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -242,7 +322,7 @@
 							"key": "__cq_dnt"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -270,14 +350,20 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+						"value": "Bearer {{bearer_token}}"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": ""
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
 				},
-				"url": "localhost:{{port}}/api/players",
 				"description": "List all current players in the system. Players are scoped to the current user."
 			},
 			"response": [
@@ -299,11 +385,17 @@
 								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": "localhost:3000/api/players"
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
 					},
 					"status": "OK",
 					"code": 200,
@@ -348,7 +440,7 @@
 					],
 					"cookie": [
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": true,
 							"domain": "localhost",
 							"path": "/",
@@ -357,7 +449,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -366,7 +458,7 @@
 							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -375,7 +467,7 @@
 							"key": "__cq_dnt"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -390,6 +482,24 @@
 		},
 		{
 			"name": "Create Player",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e78a4600-b4cc-429a-82cb-f5d732ac7883",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.environment.set(\"player_id\", jsonData.player.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [
@@ -403,14 +513,24 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+						"value": "Bearer {{bearer_token}}"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n\t\"first_name\": \"Billy\",\n\t\"last_name\":\"Bob\",\n\t\"rating\":\"9000\",\n\t\"handedness\":\"right\"\n}"
 				},
-				"url": "localhost:{{port}}/api/players",
+				"url": {
+					"raw": "localhost:{{port}}/api/players",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players"
+					]
+				},
 				"description": "Create new player in the system. Players must have unique first name / last name combinations.\n\n"
 			},
 			"response": [
@@ -436,7 +556,17 @@
 							"mode": "raw",
 							"raw": "{\n\t\"first_name\": \"Billy\",\n\t\"last_name\":\"Bob\",\n\t\"rating\":\"9000\",\n\t\"handedness\":\"right\"\n}"
 						},
-						"url": "localhost:3000/api/players"
+						"url": {
+							"raw": "localhost:3000/api/players",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players"
+							]
+						}
 					},
 					"status": "Created",
 					"code": 201,
@@ -481,7 +611,7 @@
 					],
 					"cookie": [
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": true,
 							"domain": "localhost",
 							"path": "/",
@@ -490,7 +620,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -499,7 +629,7 @@
 							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -508,7 +638,7 @@
 							"key": "__cq_dnt"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -536,14 +666,25 @@
 					},
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1Yjg1NjI3Yzg3M2ViNzkxMWIyYzM1MGQiLCJpYXQiOjE1MzU0NjgzMTZ9.sj_1bCq1TKDc9ddwCSr33XXl1u-G5zZw2HqIzn74M8U"
+						"value": "Bearer {{bearer_token}}"
 					}
 				],
 				"body": {
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": "localhost:{{port}}/api/players/5b856477873eb7911b2c350e"
+				"url": {
+					"raw": "localhost:{{port}}/api/players/{{player_id}}",
+					"host": [
+						"localhost"
+					],
+					"port": "{{port}}",
+					"path": [
+						"api",
+						"players",
+						"{{player_id}}"
+					]
+				}
 			},
 			"response": [
 				{
@@ -568,7 +709,18 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "localhost:3000/api/players/5b856477873eb7911b2c350e"
+						"url": {
+							"raw": "localhost:3000/api/players/5b856477873eb7911b2c350e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"players",
+								"5b856477873eb7911b2c350e"
+							]
+						}
 					},
 					"status": "OK",
 					"code": 200,
@@ -613,7 +765,7 @@
 					],
 					"cookie": [
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": true,
 							"domain": "localhost",
 							"path": "/",
@@ -622,7 +774,7 @@
 							"key": "dwsid"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -631,7 +783,7 @@
 							"key": "dwanonymous_ed28ebc77d813c7f8d64fd2075b1b67c"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
@@ -640,7 +792,7 @@
 							"key": "__cq_dnt"
 						},
 						{
-							"expires": "Mon Jan 18 2038 22:14:07 GMT-0500 (EST)",
+							"expires": "Invalid Date",
 							"httpOnly": false,
 							"domain": "localhost",
 							"path": "/",
