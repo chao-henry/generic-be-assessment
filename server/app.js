@@ -1,10 +1,10 @@
-import express from "express";
-import passport from "passport";
-import winston from "winston";
-import expressWinston from "express-winston";
+import express from 'express';
+import passport from 'passport';
+import winston from 'winston';
+import expressWinston from 'express-winston';
 
-import { strategy } from "./config/passportConfig";
-import routes from "./routes";
+import { strategy } from './config/passportConfig';
+import routes from './routes';
 
 passport.use(strategy);
 
@@ -19,7 +19,7 @@ app.use(passport.initialize()); // Authentication middleware
 app.use(express.json()); // JSON parsing middleware
 
 app.use(expressWinston.logger(winstonLoggingOptions)); // Logging middlware
-app.use("/api", routes); //Routing middleware
+app.use('/api', routes); //Routing middleware
 app.use(expressWinston.errorLogger(winstonLoggingOptions)); // Error logging
 
 app.listen(port, () => console.log(`Server running on port ${port}`));

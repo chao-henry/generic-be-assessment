@@ -1,5 +1,5 @@
-import { User } from "../models/index";
-import { logger } from "../config/loggerConfig";
+import { User } from '../models/index';
+import { logger } from '../config/loggerConfig';
 
 const index = async (req, res) => {
   try {

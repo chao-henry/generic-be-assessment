@@ -1,11 +1,11 @@
-import bcrypt from "bcrypt";
-import { User } from "../models/index";
-import { logger } from "../config/loggerConfig";
+import bcrypt from 'bcrypt';
+import { User } from '../models/index';
+import { logger } from '../config/loggerConfig';
 
 const index = async (req, res) => {
   try {
     if (req.body.password != req.body.confirm_password) {
-      return res.status(400).send("Unmatched passwords");
+      return res.status(400).send('Unmatched passwords');
     }
 
     const userData = {

@@ -1,8 +1,8 @@
-import Sequelize from "sequelize";
+import Sequelize from 'sequelize';
 
-import { Player, ManagementRelationship } from "../models/index";
-import playerSerializer from "../serializers/playerSerializer";
-import { logger } from "../config/loggerConfig";
+import { Player, ManagementRelationship } from '../models/index';
+import playerSerializer from '../serializers/playerSerializer';
+import { logger } from '../config/loggerConfig';
 
 const index = async (req, res) => {
   try {
@@ -89,7 +89,7 @@ const delete_player = async (req, res) => {
         );
       }
     } else {
-      throw new Error("Error in record destruction");
+      throw new Error('Error in record destruction');
     }
     return res.json({ success: true });
   } catch (err) {
