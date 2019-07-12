@@ -5,16 +5,19 @@
   "scripts": {
     "assess": "newman run assessment.json -g environment.json",
     "build": "rm -rf build && babel . -d build --ignore node_modules",
+    "clean": "rm -rf bin && rm -rf build && rm -rf node_modules",
     "db-build": "sequelize db:create --config=server/config/config.js",
     "db-drop": "sequelize db:drop --config=server/config/config.js",
     "db-migrate": "sequelize db:migrate --config=server/config/config.js --migrations-path=server/migrations --models-path=server/models",
     "db-refresh": "yarn db-drop && yarn db-build && yarn db-migrate",
+    "lambda": "mkdir -p bin && rm bin/deploy.zip || true && yarn build && cp -r ./build/server ./bin && cp ./lambda/lambda.js ./bin && cp -r ./node_modules ./bin && cd ./bin && zip -r deploy.zip *",
     "regression-test": "yarn db-refresh && newman run regression.json -g environment.json",
     "start": "nodemon --exec babel-node server/app.js",
     "test": "NODE_ENV=test jest -ci",
     "static-scan": "docker run -v server:/src jonpwilson/nodejsscan-cli -d /src -o /src/results.json"
   },
   "dependencies": {
+    "aws-serverless-express": "^3.3.6",
     "bcrypt": "^3.0.6",
     "dotenv": "^8.0.0",
     "express": "^4.17.1",

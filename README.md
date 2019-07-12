@@ -10,6 +10,7 @@ Henry Chao - Submission
   - [Deployments and Testing](#Deployments-and-Testing)
     - [Docker](#Docker)
     - [Docker Compose and Testing](#Docker-Compose-and-Testing)
+    - [Lambda Deployment and Testing](#Lambda-Deployment-and-Testing)
 
 ## Getting Started
 
@@ -113,3 +114,9 @@ docker exec be_exercise yarn db-migrate
 You can then run Postman or Newman against your `localhost:3000` for the assessment. Or alternative run the `yarn assess` or `yarn regression-test` command.
 
 Run `docker-compose down` after testing is complete to shut down the containers.
+
+### Lambda Deployment and Testing
+
+To create a lambda deployment for AWS, run the `yarn lambda` command. This will create a `deploy.zip` file within the `bin` directory. You can then upload that zip file into AWS Lambda.
+
+For local testing, you can also use the [AWS SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html).
