@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config();
 
 const pool_config = {
   min: 0,
@@ -14,7 +14,7 @@ module.exports = {
     host: process.env.DATABASE_HOST,
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
-    dialect: "postgres",
+    dialect: 'postgres',
     pool: pool_config
   },
   development: {
@@ -22,7 +22,7 @@ module.exports = {
     host: process.env.DATABASE_HOST,
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
-    dialect: "postgres",
+    dialect: 'postgres',
     pool: pool_config
   },
   production: {
@@ -30,7 +30,7 @@ module.exports = {
     host: process.env.DATABASE_HOST,
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
-    dialect: "postgres",
+    dialect: 'postgres',
     pool: pool_config
   }
 };
